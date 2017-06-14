@@ -89,7 +89,7 @@
             this.Back220 = new System.Windows.Forms.Button();
             this.Back221 = new System.Windows.Forms.Button();
             this.Back020 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.RefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Left022
@@ -578,10 +578,10 @@
             this.Back020.TabIndex = 50;
             this.Back020.UseVisualStyleBackColor = true;
             // 
-            // timer1
+            // RefreshTimer
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.RefreshTimer.Enabled = true;
+            this.RefreshTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // CubeFaceDisplay
             // 
@@ -716,6 +716,6 @@
         private System.Windows.Forms.Button Back220;
         private System.Windows.Forms.Button Back221;
         private System.Windows.Forms.Button Back020;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer RefreshTimer;
     }
 }

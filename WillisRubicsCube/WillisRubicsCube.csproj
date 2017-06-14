@@ -60,8 +60,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandManager.cs" />
     <Compile Include="CubeSolver.cs" />
+    <Compile Include="Cubie.cs" />
+    <Compile Include="CubieControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CubieControl.designer.cs">
+      <DependentUpon>CubieControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dictionary.cs" />
     <Compile Include="HistoryControl.cs">
       <SubType>UserControl</SubType>
@@ -85,6 +91,10 @@
     <Compile Include="CubeFaceDisplay.Designer.cs">
       <DependentUpon>CubeFaceDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="RubicsCube.cs" />
+    <EmbeddedResource Include="CubieControl.resx">
+      <DependentUpon>CubieControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HistoryControl.resx">
       <DependentUpon>HistoryControl.cs</DependentUpon>
     </EmbeddedResource>

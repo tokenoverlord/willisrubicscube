@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistoryControl));
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.RefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // listView1
@@ -56,16 +56,16 @@
             this.columnHeader1.Text = "Move";
             this.columnHeader1.Width = 370;
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "OK_Dark16.png");
+            // 
+            // RefreshTimer
+            // 
+            this.RefreshTimer.Enabled = true;
+            this.RefreshTimer.Tick += new System.EventHandler(this.RefreshTimer_Tick);
             // 
             // HistoryControl
             // 
@@ -82,7 +82,7 @@
 
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Timer RefreshTimer;
     }
 }

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace WillisRubicsCube
@@ -13,102 +8,144 @@ namespace WillisRubicsCube
     public partial class HistoryControl : UserControl
     {
         #region Private Members
-        private CommandManager _clsManager;
+        private int _numUndoPointer = 0;
+        private bool _flgModified = false;
+        private List<ICommand> _lstHistory;
         #endregion Private Members
 
         #region Constructor
         public HistoryControl()
         {
             InitializeComponent();
-            timer1.Enabled = false;
+
+            // init the history list.
+            _lstHistory = new List<ICommand>();
         }
         #endregion Constructor
 
         #region Public Methods
-        public void LoadManager(CommandManager clsManager)
+        public void Add(ICommand clsCommand)
         {
-            _clsManager = clsManager;
-            timer1.Enabled = true;
+            // sanity check
+            if (clsCommand == null)
+            {
+                return;
+            }
+
+            // check if the command is reversable
+            if (!clsCommand.IsReversable)
+            {
+                return;
+            }
+
+            // check if the undo pointer is not at the
+            // end of the history list
+            if (_numUndoPointer < _lstHistory.Count)
+            {
+                // we need to remove all commands
+                // after the undo pointer since they
+                // will not be relevent.
+                _lstHistory.RemoveRange(_numUndoPointer, _lstHistory.Count - _numUndoPointer);
+            }
+
+            // add the command to the history list.
+            _lstHistory.Add(clsCommand);
+
+            // adjust the count
+            _numUndoPointer = _lstHistory.Count;
+
+            // set the modified flag.
+            _flgModified = true;
         }
 
-        //public void InsertCommand(ICommand clsCommand)
-        //{
-        //    if (clsCommand != null)
-        //    {
-        //        if (clsCommand.IsReversable)
-        //        {
-        //            // create list item
-        //            ListViewItem clsItem = new ListViewItem();
-        //            clsItem.Text = clsCommand.ToString();
-        //            clsItem.Tag = clsCommand;
-
-        //            listView1.Items.Add(clsItem);
-        //        }
-        //    }
-        //}
-
-        //public void Undo()
-        //{
-        //    //if (listView1.Items.Count > 0)
-        //    //{
-        //    //    ICommand clsCommand = (listView1.Items[listView1.Items.Count - 1].Tag as ICommand);
-        //    //    clsCommand.UnExecute();
-        //    //    listView1.Items.RemoveAt(listView1.Items.Count - 1);
-        //    //}
-        //}
-
-        //public void Redo()
-        //{
-        //    //if (listView1.Items.Count > 0)
-        //    //{
-        //    //    if (_numUndoCount < listView1.Items.Count)
-        //    //    {
-        //    //        // go to next item
-        //    //        _numUndoCount++;
-
-        //    //        // get the i command
-        //    //        ICommand clsCommand = listView1.Items[_numUndoCount - 1].Tag as ICommand;
-        //    //        //listView1.Items[_numUndoCount].ImageIndex = 0;
-        //    //        if (clsCommand.IsReversable)
-        //    //        {
-        //    //            clsCommand.Execute();
-        //    //        }
-        //    //        UpdateCurrentItemImage();
-        //    //    }
-        //    //}
-        //}
-        #endregion Public Methods
-
-        #region Private Methods
-        private void timer1_Tick(object sender, EventArgs e)
+        public void Undo()
         {
-            if (_clsManager.Modified)
+            // check if we have commands to undo
+            if (_numUndoPointer > 0)
             {
-                listView1.BeginUpdate();
+                // undo the command at current undo pointer
+                _lstHistory[_numUndoPointer - 1].UnExecute();
 
-                listView1.Items.Clear();
+                // change the undo pointer
+                _numUndoPointer--;
 
-                for (int i = 0; i < _clsManager.History.Count; i++)
-                {
-                    InsertCommand(_clsManager.History[i]);
-
-                    if (i == _clsManager.Index - 1)
-                    {
-                        listView1.Items[i].ImageIndex = 0;
-                    }
-
-                    //if (i > _clsManager.Index)
-                    //{
-                    //    // High light
-                    //    listView1.Items[i].BackColor = Color.Gray;
-                    //}
-                }
-                listView1.EndUpdate();
-                _clsManager.Modified = false;
+                // set the modified to true
+                _flgModified = true;
             }
         }
 
-        private void InsertCommand(ICommand clsCommand)
+        public void Redo()
+        {
+            // check if the undo pointer is not at
+            // the last command
+            if (_numUndoPointer < _lstHistory.Count)
+            {
+                // go to the next command to redo
+                _numUndoPointer++;
+
+                // redo the command
+                _lstHistory[_numUndoPointer].Execute();
+
+                // set the modified to true.
+            }
+        }
+
+        public void Clear()
+        {
+            // clear the history
+            _lstHistory.Clear();
+
+            // reset the undo pointer
+            _numUndoPointer = 0;
+
+            // set the modified to true
+            _flgModified = true;
+        }
+        #endregion Public Methods
+
+        #region Private Methods
+        private void RefreshTimer_Tick(object sender, EventArgs e)
+        {
+            if (_flgModified)
+            {
+                // set modified to false
+                _flgModified = false;
+                // begin update
+                listView1.BeginUpdate();
+
+                // start the update
+                try
+                {
+                    // clear the current list view
+                    listView1.Items.Clear();
+
+                    // go through the history
+                    foreach (ICommand clsCmd in _lstHistory)
+                    {
+                        // append the ICommand
+                        AppendCommand(clsCmd);
+
+                        // mark where the current index is at.
+                        if (_numUndoPointer == listView1.Items.Count - 1)
+                        {
+                            // marked where the undo pointer is at
+                            listView1.Items[_numUndoPointer].ImageIndex = 0;
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    // show the exception
+                    Debug.Assert(false, "[HistoryControl::RefreshTimer_Tick] Assert -> " + ex.Message);
+                }
+                finally{
+                    // end update
+                    listView1.EndUpdate();
+                }
+            }
+        }
+
+        private void AppendCommand(ICommand clsCommand)
         {
             if (clsCommand != null)
             {
