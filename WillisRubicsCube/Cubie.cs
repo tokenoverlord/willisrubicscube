@@ -120,6 +120,11 @@ namespace WillisRubicsCube
             // not equals return false
             return false;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         #endregion Public Methods
 
         #region Private Methods

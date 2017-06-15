@@ -77,9 +77,9 @@ namespace WillisRubicsCube
         //}
         #endregion Properties
 
-        #region Events
-        public event EventHandler NewRubicsCubeLoadedEvent;
-        #endregion Events
+        //#region Events
+        //public event EventHandler NewRubicsCubeLoadedEvent;
+        //#endregion Events
 
         #region Public Methods
         public void LoadRubicsCube(RubicsCube clsRubicsCube)

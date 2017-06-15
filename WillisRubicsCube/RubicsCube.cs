@@ -59,6 +59,8 @@ namespace WillisRubicsCube
             InvRotateUp = new RotateFaceCommand(RotateFace,
                 FaceRotateNotation.Up_Inverted,
                 FaceRotateNotation.Up);
+
+            ResetCommand = new ResetRubicsCubeCommand(Reset);
         }
         #endregion Constructor
 
@@ -88,6 +90,8 @@ namespace WillisRubicsCube
         public ICommand RotateDown { get; private set; }
 
         public ICommand InvRotateDown { get; private set; }
+
+        public ICommand ResetCommand { get; private set; }
         #endregion Properties
 
         #region Public Methods
@@ -949,6 +953,41 @@ namespace WillisRubicsCube
     }
 
     public delegate void RotateFaceDelegate(FaceRotateNotation flgRotateDir);
+
+    public delegate void RubicsCubeDelegate();
+
+    public class ResetRubicsCubeCommand : ICommand
+    {
+        #region Private Members
+        private RubicsCubeDelegate _delResetMethod;
+        #endregion Private Members
+
+        #region Constructor
+        public ResetRubicsCubeCommand(RubicsCubeDelegate delResetMethod)
+        {
+            _delResetMethod = delResetMethod;
+        }
+        #endregion Constructor
+
+        #region Properties
+        public bool IsReversable
+        {
+            get { return false; }
+        }
+        #endregion Properties
+
+        #region Public Methods
+        public void Execute()
+        {
+            _delResetMethod();
+        }
+
+        public void UnExecute()
+        {
+            //throw new NotImplementedException();
+        }
+        #endregion Public Methods
+    }
 
     public class RotateFaceCommand : ICommand
     {

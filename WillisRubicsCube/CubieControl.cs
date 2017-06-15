@@ -14,7 +14,6 @@ namespace WillisRubicsCube
     public partial class CubieControl : UserControl
     {
         #region Private Members
-        private Cubie _clsCubie;
         private Point3D _clsLocation = new Point3D();
         private CubeSurface _flgSurface = CubeSurface.Back;
         #endregion Private Members
@@ -27,7 +26,7 @@ namespace WillisRubicsCube
         #endregion Constructor
 
         #region Properties
-        public Point3D Location3D
+        public Point3D CubeLocation
         {
             get { return _clsLocation; }
             set { _clsLocation = value; }
@@ -41,16 +40,15 @@ namespace WillisRubicsCube
         #endregion Properties
 
         #region Public Methods
-        public void LoadCubie(Cubie clsCubie)
+        public void LoadCubie(List<Cubie> lstCubies)
         {
-            this._clsCubie = clsCubie;
+            // find the cubie at this location3d
+            ChangeColor(lstCubies.Find(x => x.Location == this.CubeLocation));
         }
 
-        public override void Refresh()
+        public void ChangeColor(Cubie clsCubie)
         {
-            base.Refresh();
-
-            if (_clsCubie != null)
+            if (clsCubie != null)
             {
                 // get the color
                 Color clsColor = Color.Black;
@@ -59,22 +57,22 @@ namespace WillisRubicsCube
                 switch (_flgSurface)
                 {
                     case CubeSurface.Back:
-                        clsColor = GetColor(_clsCubie.Back);
+                        clsColor = GetColor(clsCubie.Back);
                         break;
                     case CubeSurface.Down:
-                        clsColor = GetColor(_clsCubie.Down);
+                        clsColor = GetColor(clsCubie.Down);
                         break;
                     case CubeSurface.Face:
-                        clsColor = GetColor(_clsCubie.Face);
+                        clsColor = GetColor(clsCubie.Face);
                         break;
                     case CubeSurface.Left:
-                        clsColor = GetColor(_clsCubie.Left);
+                        clsColor = GetColor(clsCubie.Left);
                         break;
                     case CubeSurface.Right:
-                        clsColor = GetColor(_clsCubie.Right);
+                        clsColor = GetColor(clsCubie.Right);
                         break;
                     case CubeSurface.Up:
-                        clsColor = GetColor(_clsCubie.Up);
+                        clsColor = GetColor(clsCubie.Up);
                         break;
                 }
 

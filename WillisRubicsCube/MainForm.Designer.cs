@@ -28,18 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Button_Right = new System.Windows.Forms.Button();
-            this.Button_Left = new System.Windows.Forms.Button();
-            this.ButtonDown = new System.Windows.Forms.Button();
-            this.ButtonBack = new System.Windows.Forms.Button();
-            this.ButtonIBack = new System.Windows.Forms.Button();
-            this.Button_ILeft = new System.Windows.Forms.Button();
-            this.Button_IRight = new System.Windows.Forms.Button();
-            this.ButtonIDown = new System.Windows.Forms.Button();
-            this.ButtonIUp = new System.Windows.Forms.Button();
-            this.ButtonIFront = new System.Windows.Forms.Button();
-            this.ButtonUp = new System.Windows.Forms.Button();
-            this.ButtonFront = new System.Windows.Forms.Button();
             this.ButtonCubeRight = new System.Windows.Forms.Button();
             this.ButtonCubeLeft = new System.Windows.Forms.Button();
             this.ButtonCubeDown = new System.Windows.Forms.Button();
@@ -50,7 +38,7 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.cubeFaceDisplay1 = new WillisRubicsCube.CubeFaceDisplay();
+            this.cubeFaceDisplay2 = new WillisRubicsCube.RubicsCubeControl();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.historyControl1 = new WillisRubicsCube.HistoryControl();
             this.textBoxPercentSolved = new System.Windows.Forms.TextBox();
@@ -59,6 +47,7 @@
             this.ButtonRedo = new System.Windows.Forms.Button();
             this.ButtonUndo = new System.Windows.Forms.Button();
             this.ButtonSolve = new System.Windows.Forms.Button();
+            this.cubeFaceDisplay1 = new WillisRubicsCube.RubicsCubeControl();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -69,126 +58,6 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Button_Right
-            // 
-            this.Button_Right.Location = new System.Drawing.Point(3, 3);
-            this.Button_Right.Name = "Button_Right";
-            this.Button_Right.Size = new System.Drawing.Size(75, 23);
-            this.Button_Right.TabIndex = 3;
-            this.Button_Right.Text = "Right";
-            this.Button_Right.UseVisualStyleBackColor = true;
-            this.Button_Right.Click += new System.EventHandler(this.Button_Right_Click);
-            // 
-            // Button_Left
-            // 
-            this.Button_Left.Location = new System.Drawing.Point(3, 32);
-            this.Button_Left.Name = "Button_Left";
-            this.Button_Left.Size = new System.Drawing.Size(75, 23);
-            this.Button_Left.TabIndex = 4;
-            this.Button_Left.Text = "Left";
-            this.Button_Left.UseVisualStyleBackColor = true;
-            this.Button_Left.Click += new System.EventHandler(this.Button_Left_Click);
-            // 
-            // ButtonDown
-            // 
-            this.ButtonDown.Location = new System.Drawing.Point(3, 90);
-            this.ButtonDown.Name = "ButtonDown";
-            this.ButtonDown.Size = new System.Drawing.Size(75, 23);
-            this.ButtonDown.TabIndex = 6;
-            this.ButtonDown.Text = "Down";
-            this.ButtonDown.UseVisualStyleBackColor = true;
-            this.ButtonDown.Click += new System.EventHandler(this.ButtonDown_Click);
-            // 
-            // ButtonBack
-            // 
-            this.ButtonBack.Location = new System.Drawing.Point(3, 61);
-            this.ButtonBack.Name = "ButtonBack";
-            this.ButtonBack.Size = new System.Drawing.Size(75, 23);
-            this.ButtonBack.TabIndex = 5;
-            this.ButtonBack.Text = "Back";
-            this.ButtonBack.UseVisualStyleBackColor = true;
-            this.ButtonBack.Click += new System.EventHandler(this.ButtonBack_Click);
-            // 
-            // ButtonIBack
-            // 
-            this.ButtonIBack.Location = new System.Drawing.Point(84, 61);
-            this.ButtonIBack.Name = "ButtonIBack";
-            this.ButtonIBack.Size = new System.Drawing.Size(75, 23);
-            this.ButtonIBack.TabIndex = 9;
-            this.ButtonIBack.Text = "I Back";
-            this.ButtonIBack.UseVisualStyleBackColor = true;
-            this.ButtonIBack.Click += new System.EventHandler(this.ButtonIBack_Click);
-            // 
-            // Button_ILeft
-            // 
-            this.Button_ILeft.Location = new System.Drawing.Point(84, 32);
-            this.Button_ILeft.Name = "Button_ILeft";
-            this.Button_ILeft.Size = new System.Drawing.Size(75, 23);
-            this.Button_ILeft.TabIndex = 8;
-            this.Button_ILeft.Text = "I Left";
-            this.Button_ILeft.UseVisualStyleBackColor = true;
-            this.Button_ILeft.Click += new System.EventHandler(this.Button_ILeft_Click);
-            // 
-            // Button_IRight
-            // 
-            this.Button_IRight.Location = new System.Drawing.Point(84, 3);
-            this.Button_IRight.Name = "Button_IRight";
-            this.Button_IRight.Size = new System.Drawing.Size(75, 23);
-            this.Button_IRight.TabIndex = 7;
-            this.Button_IRight.Text = "I Right";
-            this.Button_IRight.UseVisualStyleBackColor = true;
-            this.Button_IRight.Click += new System.EventHandler(this.Button_IRight_Click);
-            // 
-            // ButtonIDown
-            // 
-            this.ButtonIDown.Location = new System.Drawing.Point(84, 90);
-            this.ButtonIDown.Name = "ButtonIDown";
-            this.ButtonIDown.Size = new System.Drawing.Size(75, 23);
-            this.ButtonIDown.TabIndex = 10;
-            this.ButtonIDown.Text = "I Down";
-            this.ButtonIDown.UseVisualStyleBackColor = true;
-            this.ButtonIDown.Click += new System.EventHandler(this.ButtonIDown_Click);
-            // 
-            // ButtonIUp
-            // 
-            this.ButtonIUp.Location = new System.Drawing.Point(84, 148);
-            this.ButtonIUp.Name = "ButtonIUp";
-            this.ButtonIUp.Size = new System.Drawing.Size(75, 23);
-            this.ButtonIUp.TabIndex = 14;
-            this.ButtonIUp.Text = "I Up";
-            this.ButtonIUp.UseVisualStyleBackColor = true;
-            this.ButtonIUp.Click += new System.EventHandler(this.ButtonIUp_Click);
-            // 
-            // ButtonIFront
-            // 
-            this.ButtonIFront.Location = new System.Drawing.Point(84, 119);
-            this.ButtonIFront.Name = "ButtonIFront";
-            this.ButtonIFront.Size = new System.Drawing.Size(75, 23);
-            this.ButtonIFront.TabIndex = 13;
-            this.ButtonIFront.Text = "I Front";
-            this.ButtonIFront.UseVisualStyleBackColor = true;
-            this.ButtonIFront.Click += new System.EventHandler(this.ButtonIFront_Click);
-            // 
-            // ButtonUp
-            // 
-            this.ButtonUp.Location = new System.Drawing.Point(3, 148);
-            this.ButtonUp.Name = "ButtonUp";
-            this.ButtonUp.Size = new System.Drawing.Size(75, 23);
-            this.ButtonUp.TabIndex = 12;
-            this.ButtonUp.Text = "Up";
-            this.ButtonUp.UseVisualStyleBackColor = true;
-            this.ButtonUp.Click += new System.EventHandler(this.ButtonUp_Click);
-            // 
-            // ButtonFront
-            // 
-            this.ButtonFront.Location = new System.Drawing.Point(3, 119);
-            this.ButtonFront.Name = "ButtonFront";
-            this.ButtonFront.Size = new System.Drawing.Size(75, 23);
-            this.ButtonFront.TabIndex = 11;
-            this.ButtonFront.Text = "Front";
-            this.ButtonFront.UseVisualStyleBackColor = true;
-            this.ButtonFront.Click += new System.EventHandler(this.ButtonFront_Click);
             // 
             // ButtonCubeRight
             // 
@@ -295,7 +164,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.cubeFaceDisplay1);
+            this.splitContainer1.Panel1.Controls.Add(this.cubeFaceDisplay2);
             // 
             // splitContainer1.Panel2
             // 
@@ -304,13 +173,13 @@
             this.splitContainer1.SplitterDistance = 344;
             this.splitContainer1.TabIndex = 24;
             // 
-            // cubeFaceDisplay1
+            // cubeFaceDisplay2
             // 
-            this.cubeFaceDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cubeFaceDisplay1.Location = new System.Drawing.Point(0, 0);
-            this.cubeFaceDisplay1.Name = "cubeFaceDisplay1";
-            this.cubeFaceDisplay1.Size = new System.Drawing.Size(344, 615);
-            this.cubeFaceDisplay1.TabIndex = 0;
+            this.cubeFaceDisplay2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cubeFaceDisplay2.Location = new System.Drawing.Point(0, 0);
+            this.cubeFaceDisplay2.Name = "cubeFaceDisplay2";
+            this.cubeFaceDisplay2.Size = new System.Drawing.Size(344, 615);
+            this.cubeFaceDisplay2.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -337,20 +206,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.ButtonCubeCCW);
             this.splitContainer2.Panel2.Controls.Add(this.ButtonScramble);
             this.splitContainer2.Panel2.Controls.Add(this.ButtonCubeRight);
-            this.splitContainer2.Panel2.Controls.Add(this.ButtonIUp);
             this.splitContainer2.Panel2.Controls.Add(this.ButtonCubeUp);
-            this.splitContainer2.Panel2.Controls.Add(this.ButtonIFront);
             this.splitContainer2.Panel2.Controls.Add(this.ButtonCubeLeft);
-            this.splitContainer2.Panel2.Controls.Add(this.ButtonUp);
-            this.splitContainer2.Panel2.Controls.Add(this.Button_Right);
-            this.splitContainer2.Panel2.Controls.Add(this.Button_IRight);
-            this.splitContainer2.Panel2.Controls.Add(this.ButtonFront);
-            this.splitContainer2.Panel2.Controls.Add(this.Button_ILeft);
-            this.splitContainer2.Panel2.Controls.Add(this.Button_Left);
-            this.splitContainer2.Panel2.Controls.Add(this.ButtonDown);
-            this.splitContainer2.Panel2.Controls.Add(this.ButtonIDown);
-            this.splitContainer2.Panel2.Controls.Add(this.ButtonIBack);
-            this.splitContainer2.Panel2.Controls.Add(this.ButtonBack);
             this.splitContainer2.Size = new System.Drawing.Size(684, 615);
             this.splitContainer2.SplitterDistance = 228;
             this.splitContainer2.TabIndex = 24;
@@ -421,6 +278,14 @@
             this.ButtonSolve.UseVisualStyleBackColor = true;
             this.ButtonSolve.Click += new System.EventHandler(this.ButtonSolve_Click);
             // 
+            // cubeFaceDisplay1
+            // 
+            this.cubeFaceDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cubeFaceDisplay1.Location = new System.Drawing.Point(0, 0);
+            this.cubeFaceDisplay1.Name = "cubeFaceDisplay1";
+            this.cubeFaceDisplay1.Size = new System.Drawing.Size(344, 615);
+            this.cubeFaceDisplay1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,19 +310,7 @@
 
         #endregion
 
-        private CubeFaceDisplay cubeFaceDisplay1;
-        private System.Windows.Forms.Button Button_Right;
-        private System.Windows.Forms.Button Button_Left;
-        private System.Windows.Forms.Button ButtonDown;
-        private System.Windows.Forms.Button ButtonBack;
-        private System.Windows.Forms.Button ButtonIBack;
-        private System.Windows.Forms.Button Button_ILeft;
-        private System.Windows.Forms.Button Button_IRight;
-        private System.Windows.Forms.Button ButtonIDown;
-        private System.Windows.Forms.Button ButtonIUp;
-        private System.Windows.Forms.Button ButtonIFront;
-        private System.Windows.Forms.Button ButtonUp;
-        private System.Windows.Forms.Button ButtonFront;
+        private RubicsCubeControl cubeFaceDisplay1;
         private System.Windows.Forms.Button ButtonCubeRight;
         private System.Windows.Forms.Button ButtonCubeLeft;
         private System.Windows.Forms.Button ButtonCubeDown;
@@ -476,6 +329,7 @@
         private System.Windows.Forms.Button ButtonClear;
         private System.Windows.Forms.TextBox textBoxPercentSolved;
         private System.Windows.Forms.Label label2;
+        private RubicsCubeControl cubeFaceDisplay2;
     }
 }
 

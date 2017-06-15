@@ -12,6 +12,18 @@ namespace WillisRubicsCube
         void UnExecute();
     }
 
+    public delegate void ICommandHandler(object sender, ICommandArgs args);
+
+    public class ICommandArgs : EventArgs
+    {
+        public ICommand Command { get; private set; }
+
+        public ICommandArgs(ICommand clsCommand)
+        {
+            this.Command = clsCommand;
+        }
+    }
+
     //public class CommandRotateCube : ICommand
     //{
     //    #region Private Members

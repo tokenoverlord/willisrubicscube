@@ -85,11 +85,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RCubeManager.cs" />
-    <Compile Include="CubeFaceDisplay.cs">
+    <Compile Include="RubicsCubeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CubeFaceDisplay.Designer.cs">
-      <DependentUpon>CubeFaceDisplay.cs</DependentUpon>
+    <Compile Include="RubicsCubeControl.Designer.cs">
+      <DependentUpon>RubicsCubeControl.cs</DependentUpon>
     </Compile>
     <Compile Include="RubicsCube.cs" />
     <EmbeddedResource Include="CubieControl.resx">
@@ -110,9 +110,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CubeFaceDisplay.resx">
-      <DependentUpon>CubeFaceDisplay.cs</DependentUpon>
+    <EmbeddedResource Include="RubicsCubeControl.resx">
+      <DependentUpon>RubicsCubeControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\RubicsCube.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

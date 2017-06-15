@@ -135,42 +135,34 @@ namespace WillisRubicsCube
 
         private void ButtonBack_Click(object sender, EventArgs e)
         {
-            ExecuteICommand(ButtonBack.Tag as ICommand);
         }
 
         private void ButtonIBack_Click(object sender, EventArgs e)
         {
-            ExecuteICommand(ButtonIBack.Tag as ICommand);
         }
 
         private void ButtonDown_Click(object sender, EventArgs e)
         {
-            ExecuteICommand(ButtonDown.Tag as ICommand);
         }
 
         private void ButtonIDown_Click(object sender, EventArgs e)
         {
-            ExecuteICommand(ButtonIDown.Tag as ICommand);
         }
 
         private void ButtonFront_Click(object sender, EventArgs e)
         {
-            ExecuteICommand(ButtonFront.Tag as ICommand);
         }
 
         private void ButtonIFront_Click(object sender, EventArgs e)
         {
-            ExecuteICommand(ButtonIFront.Tag as ICommand);
         }
 
         private void ButtonUp_Click(object sender, EventArgs e)
         {
-            ExecuteICommand(ButtonUp.Tag as ICommand);
         }
 
         private void ButtonIUp_Click(object sender, EventArgs e)
         {
-            ExecuteICommand(ButtonIUp.Tag as ICommand);
         }
         #endregion Face Rotation
 
