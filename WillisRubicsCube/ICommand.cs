@@ -274,10 +274,10 @@ namespace WillisRubicsCube
     //    {
     //        // look for the cube in location
 
-    //        if (_clsManager.RubicsCube.Exists(x => x.ToString() == _strLocation))
+    //        if (_clsManager.TheRubicsCube.Exists(x => x.ToString() == _strLocation))
     //        {
     //            // get the cube
-    //            Cubie clsCube = _clsManager.RubicsCube.Find(x => x.ToString() == _strLocation);
+    //            Cubie clsCube = _clsManager.TheRubicsCube.Find(x => x.ToString() == _strLocation);
 
     //            if (_lstControls.ContainsKey(CubeSurface.Back))
     //            {

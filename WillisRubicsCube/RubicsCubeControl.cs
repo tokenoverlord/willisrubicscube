@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace WillisRubicsCube
 {
     public partial class RubicsCubeControl : UserControl
     {
         #region Private Members
-        private RubicsCube _clsRubicsCube = new RubicsCube();
+        private RCubeManager _clsRCubeManager
+            = new RCubeManager();
         #endregion Private Members
 
         #region Constructor
@@ -22,49 +16,39 @@ namespace WillisRubicsCube
         {
             InitializeComponent();
 
-            _clsRubicsCube.Reset();
+            _clsRCubeManager.RestCommand.Execute();
 
             // use the button click tag to save the reference for the ICommand
-            Button_ILeft.Tag = _clsRubicsCube.InvRotateLeft;
-            Button_Left.Tag = _clsRubicsCube.RotateLeft;
+            Button_ILeft.Tag = _clsRCubeManager.RotateILeftCommand;
+            Button_Left.Tag = _clsRCubeManager.RotateLeftCommand;
 
-            Button_IRight.Tag = _clsRubicsCube.InvRotateRight;
-            Button_Right.Tag = _clsRubicsCube.RotateRight;
+            Button_IRight.Tag = _clsRCubeManager.RotateIRightCommand;
+            Button_Right.Tag = _clsRCubeManager.RotateRightCommand;
 
-            ButtonIBack.Tag = _clsRubicsCube.InvRotateBack;
-            ButtonBack.Tag = _clsRubicsCube.RotateBack;
+            ButtonIBack.Tag = _clsRCubeManager.RotateIBackCommand;
+            ButtonBack.Tag = _clsRCubeManager.RotateBackCommand;
 
-            ButtonIUp.Tag = _clsRubicsCube.InvRotateUp;
-            ButtonUp.Tag = _clsRubicsCube.RotateUp;
+            ButtonIUp.Tag = _clsRCubeManager.RotateIUpCommand;
+            ButtonUp.Tag = _clsRCubeManager.RotateUpCommand;
 
-            ButtonIDown.Tag = _clsRubicsCube.InvRotateDown;
-            ButtonDown.Tag = _clsRubicsCube.RotateDown;
+            ButtonIDown.Tag = _clsRCubeManager.RotateIDownCommand;
+            ButtonDown.Tag = _clsRCubeManager.RotateDownCommand;
 
-            ButtonIFront.Tag = _clsRubicsCube.InvRotateFront;
-            ButtonFront.Tag = _clsRubicsCube.RotateFront;
+            ButtonIFront.Tag = _clsRCubeManager.RotateIFrontCommand;
+            ButtonFront.Tag = _clsRCubeManager.RotateFrontCommand;
         }
         #endregion Constructor
-
-        #region Properties
-        public RubicsCube TheRubicsCube { get { return _clsRubicsCube; } }
-        #endregion Properties
 
         #region Events
         public event ICommandHandler ExecuteCommandEvent;
         #endregion Events
-
-        #region Public Methods
-
-        #endregion Public Methods
 
         #region Private Methods
         private void Refresh_Tick(object sender, EventArgs e)
         {
             RefreshRubicsCube();
         }
-        #endregion Private Methods
 
-        #region Private Methods
         private void Button_Right_Click(object sender, EventArgs e)
         {
             ExecuteICommand((sender as Button).Tag);
@@ -147,7 +131,7 @@ namespace WillisRubicsCube
             {
                 if (clsControl is CubieControl)
                 {
-                    (clsControl as CubieControl).LoadCubie(_clsRubicsCube.Cubies);
+                    (clsControl as CubieControl).LoadCubie(_clsRCubeManager.TheRubicsCube.Cubies);
                 }
             }
         }
