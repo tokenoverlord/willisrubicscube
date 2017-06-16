@@ -1026,6 +1026,11 @@ namespace WillisRubicsCube
         {
             _delRotateCube(_flgReverseDir);
         }
+
+        public override string ToString()
+        {
+            return "Rotate Cube " + _flgRotateDir.ToString();
+        }
         #endregion Public Methods
     }
 }

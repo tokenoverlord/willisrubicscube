@@ -113,7 +113,6 @@
     <EmbeddedResource Include="RubicsCubeControl.resx">
       <DependentUpon>RubicsCubeControl.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\RubicsCube.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

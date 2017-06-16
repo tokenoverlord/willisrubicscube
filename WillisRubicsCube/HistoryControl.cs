@@ -84,9 +84,10 @@ namespace WillisRubicsCube
                 _numUndoPointer++;
 
                 // redo the command
-                _lstHistory[_numUndoPointer].Execute();
+                _lstHistory[_numUndoPointer - 1].Execute();
 
                 // set the modified to true.
+                _flgModified = true;
             }
         }
 
@@ -112,6 +113,8 @@ namespace WillisRubicsCube
                 _flgModified = false;
                 // begin update
                 listView1.BeginUpdate();
+                // disable the pointer
+                Cursor = Cursors.WaitCursor;
 
                 // start the update
                 try
@@ -140,6 +143,7 @@ namespace WillisRubicsCube
                 }
                 finally{
                     // end update
+                    Cursor = Cursors.Default;
                     listView1.EndUpdate();
                 }
             }
@@ -159,6 +163,21 @@ namespace WillisRubicsCube
                     listView1.Items.Add(clsItem);
                 }
             }
+        }
+
+        private void ButtonUndo_Click(object sender, EventArgs e)
+        {
+            Undo();
+        }
+
+        private void ButtonRedo_Click(object sender, EventArgs e)
+        {
+            Redo();
+        }
+
+        private void ButtonClear_Click(object sender, EventArgs e)
+        {
+            Clear();
         }
         #endregion Private Methods
     }
